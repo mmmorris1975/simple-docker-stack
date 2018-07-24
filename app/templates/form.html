@@ -3,21 +3,29 @@
 <head>
     <title>Demo App</title>
 </head>
-<body>
-    <form method="post" enctype="multipart/form-data">
-        <dl>
-            <dt>{{form.file.label}}
-            <dd>{{form.file()}}
-            {% if form.file.errors %}
-            <ul class=errors>
-            {% for error in form.file.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
+<body style="margin-left: 35%; margin-right: 35%; background-color: blue">
+    <div style="padding: 1.5em; margin: 1.5em; background-color: aliceblue">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
             </ul>
-            {% endif %}
-            </dd>
-        </dl>
+        {% endif %}
+    {% endwith %}
+    <form method="post" enctype="multipart/form-data">
+        <b>{{form.file.label}}</b><br>
+        {{form.file()}}
+        {% if form.file.errors %}
+        <ul class=errors>
+        {% for error in form.file.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
         <p><input type="submit" value="Upload"></p>
     </form>
+    </div>
 </body>
 </html>
