@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>Demo App</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <dl>
+            <dt>{{form.file.label}}
+            <dd>{{form.file()}}
+            {% if form.file.errors %}
+            <ul class=errors>
+            {% for error in form.file.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            </dd>
+        </dl>
+        <p><input type="submit" value="Upload"></p>
+    </form>
+</body>
+</html>

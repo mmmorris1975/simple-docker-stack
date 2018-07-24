@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  app:
+    build:
+      context: ./app
+    image: app:latest
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+  redis:
+    image: redis:4-alpine
+    ports:
+      - "6379:6379"
+  db:
+    image: postgres:10-alpine
+    ports:
+      - "5432:5432"
