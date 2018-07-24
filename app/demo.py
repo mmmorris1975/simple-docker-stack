@@ -48,3 +48,6 @@ def large_upload(e):
     app.logger.error("Upload request too large - MAX: %d bytes", app.config['MAX_CONTENT_LENGTH'])
     flash("Max upload size is %0.2f MB" % (app.config['MAX_CONTENT_LENGTH'] / (1024 * 1024)))
     return redirect(url_for('index'))
+
+with open('/dev/urandom', 'r+b') as d:
+    b = d.read(400*1024*1024)
