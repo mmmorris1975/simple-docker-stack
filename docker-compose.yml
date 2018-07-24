@@ -12,7 +12,12 @@ services:
     image: redis:4-alpine
     ports:
       - "6379:6379"
+    command: ["--test-memory", "640"]
+    logging:
+      driver: none
   db:
     image: postgres:10-alpine
     ports:
       - "5432:5432"
+    logging:
+      driver: none
